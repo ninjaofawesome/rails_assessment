@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<%= render :partial => @post %>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>
+
+<h2>Our Readers Say...</h2>
+	<div id="comments">
+		<%= render :partial => @post.comments %>
+	</div>
+
+<h2>Submit A (Polite) Comment!</h2>
+	<%= form_for [@post, Comment.new] do |f| %>
+		<b><%= f.label :body, "New Comment" %></b>
+		<br>
+		<%= f.text_area :body %>
+		<br>
+		<br>
+		<%= f.submit "Tell It Like It Is!" %>
+	<% end %>
+
